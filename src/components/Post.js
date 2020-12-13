@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react
 
 export default function Post({ post, onPress }) {
   return (
-    <TouchableOpacity activeOpacity="0.7" onPress={() => onPress(post)}>
+    <TouchableOpacity activeOpacity="0.9" onPress={() => onPress(post)}>
       <ImageBackground style={s.background} source={{ uri: post.url }}>
         <View style={s.textWrap}>
           <Text style={s.text}>{post.title}</Text>

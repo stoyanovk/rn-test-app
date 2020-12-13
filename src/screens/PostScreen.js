@@ -1,11 +1,11 @@
 import React from 'react'
 import { ScrollView, Text, StyleSheet, Image, Button } from 'react-native'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { createToButtonAlert } from '../alerts'
-import data from '../data'
+import AppHeaderIcon from '../components/AppHeaderIcon'
 
 export default function Post({ navigation }) {
-  const post = data.find(post => navigation.getParam('id') === post.id)
-
+  const post = navigation.getParam('post')
   const removePost = () => {}
 
   const removeHandler = () => {
@@ -26,15 +26,26 @@ export default function Post({ navigation }) {
         }}
       />
       <Text style={s.text}>{post.description}</Text>
-      <Button title="Delete post" onPress={removeHandler} />
+      <Button title="Delete post" onPress={removeHandler} color="red" />
     </ScrollView>
   )
 }
 
 Post.navigationOptions = ({ navigation }) => {
-  const post = data.find(post => navigation.getParam('id') === post.id)
+  const post = navigation.getParam('post')
+  const icon = post.booked ? 'ios-star' : 'ios-star-outline'
   return {
-    headerTitle: `Post date: ${post.date}`
+    headerTitle: `Post date: ${post.date}`,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+        <Item title="booked" iconName={icon} onPress={() => console.log('callback')} />
+      </HeaderButtons>
+    ),
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+        <Item title="ios-arrow-back" iconName="ios-arrow-back" onPress={() => navigation.goBack()} />
+      </HeaderButtons>
+    )
   }
 }
 

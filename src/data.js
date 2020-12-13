@@ -1,6 +1,7 @@
 export default [
   {
     id: '0001',
+    booked: true,
     title: 'some title 1',
     date: new Date().toLocaleDateString(),
     url: 'https://picsum.photos/id/1/300/400',
@@ -9,6 +10,7 @@ export default [
   },
   {
     id: '0002',
+    booked: false,
     title: 'some title 2',
     date: new Date().toLocaleDateString(),
     url: 'https://picsum.photos/id/102/300/400',
@@ -17,6 +19,7 @@ export default [
   },
   {
     id: '0003',
+    booked: false,
     title: 'some title 3',
     date: new Date().toLocaleDateString(),
     url: 'https://picsum.photos/id/1000/300/400',
@@ -25,6 +28,7 @@ export default [
   },
   {
     id: '0004',
+    booked: true,
     title: 'some title 4',
     date: new Date().toLocaleDateString(),
     url: 'https://picsum.photos/id/1002/300/400',

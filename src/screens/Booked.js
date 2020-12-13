@@ -1,22 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import PostList from '../components/PostList'
+import data from '../data'
 
-export default function Booked() {
-  return (
-    <View style={s.container}>
-      <Text style={s.text}>Booked</Text>
-    </View>
-  )
+const filteredData = data.filter(({ booked }) => booked)
+
+export default function Booked({ navigation }) {
+  const goToPost = post => {
+    navigation.navigate('Post', { post })
+  }
+  return <PostList goToPost={goToPost} data={filteredData} />
 }
 
-const s = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  text: {
-    fontFamily: 'NotoBold',
-    fontSize: 32
-  }
-})
+Booked.navigationOptions = {
+  headerTitle: 'Favorite'
+}
